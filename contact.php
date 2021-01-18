@@ -1,8 +1,7 @@
 <?php include 'inc/header.php'; ?>
-</div>
 
 
-	<div class="contentsection contemplete clear">
+<div class="contentsection contemplete clear">
 		<div class="maincontent clear">
 			<div class="about">
 				<h2>Contact us</h2>
@@ -43,6 +42,6 @@
 	<form>				
  </div>
 
-		</div>
+</div>
 <?php include "inc/sidebar.php"; ?>
 <?php include "inc/footer.php"; ?>
