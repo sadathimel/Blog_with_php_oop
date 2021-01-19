@@ -175,7 +175,6 @@ margin:200px 0;
 .item:hover .overlay{top:0}
 
 
-
 .slidersection {}
 .contentsection {
   background: #ffffff none repeat scroll 0 0;
@@ -210,6 +209,7 @@ margin:200px 0;
   margin-bottom: 10px;
   text-align: justify;
 }
+
 .notfound {
   min-height: 400px;
   padding-top: 100px;
@@ -291,6 +291,8 @@ margin:200px 0;
   text-decoration: none;
 }
 .readmore a:hover{color:#E16525;}
+
+
 .sidebar {
   background: #fef4e5 none repeat scroll 0 0;
   border: 1px solid #ded4c5;
@@ -370,6 +372,26 @@ margin:200px 0;
 }
 .fixedicon img {
   width: 50px;
+}
+
+.pagination{
+  display: block;
+  text-align: center;
+  font-size: 20px;
+  margin-top: 10px;
+  padding: 10px;
+}
+.pagination a{
+  background:#E6AF4B none repeat scroll 0 0;
+  border: 1px solid #a7700c;
+  border-radius: 3px;
+  color: #333;
+  margin-left: 2px;
+  padding: 2px 10px;
+  text-decoration: none;
+}
+.pagination a:hover {
+  background: #be8723 none repat scroll 0 0;
 }
 
 /*Example items*/
