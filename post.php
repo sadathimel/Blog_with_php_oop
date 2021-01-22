@@ -22,7 +22,7 @@
 
 			<h2><?php echo $result['title'];?></h2>
 			<h4><?php echo $fm->formatDate($result['date'])?>, By <?php echo $result['author']?></h4>
-			<img src="admin/upload/<?php echo $result['image'];?>" alt="MyImage"/>
+			<img src="admin/<?php echo $result['image'];?>" alt="MyImage"/>
 			<?php echo $result['body'];?>
 
 
@@ -39,7 +39,7 @@
 				?>
 
                 <a href="post.php?id=<?php echo $catresult['id']; ?>">
-                    <img src="admin/upload/<?php echo $catresult['image'];?>" alt="MyImage"/>
+                    <img src="admin/<?php echo $catresult['image'];?>" alt="MyImage"/>
                 </a>
 				<?php } } else { echo "No Releted Post Available";} ?>
 			</div>
