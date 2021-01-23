@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $title = mysqli_real_escape_string($db->link, $_POST['title']);
     $cat = mysqli_real_escape_string($db->link, $_POST['cat']);
     $body = mysqli_real_escape_string($db->link, $_POST['body']);
-    $tag = mysqli_real_escape_string($db->link, $_POST['tag']);
+    $tags = mysqli_real_escape_string($db->link, $_POST['tags']);
     $author = mysqli_real_escape_string($db->link, $_POST['author']);
 
     $permited  = array('jpg','jpeg','png','gif');
@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $uniqe_image   = substr(md5(time()), 0,10).'.'.$file_ext;
     $uploded_image = "upload/".$uniqe_image;
 
-    if ($title == "" || $cat == "" || $body == "" || $tag == "" || $author == "" || $file_name == "") {
+    if ($title == "" || $cat == "" || $body == "" || $tags == "" || $author == "" || $file_name == "") {
         echo "<span class='error'>Field must not be empty !</span>";
     } elseif ($file_size > 1048567) {
         echo "<span class='error'>Image Size should be less then 1MB!</span>";
@@ -95,7 +95,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <label>Tag</label>
                     </td>
                     <td>
-                        <input type="text" name="tag" placeholder="Enter tag..." class="medium" />
+                        <input type="text" name="tags" placeholder="Enter tag..." class="medium" />
                     </td>
                 </tr>
 

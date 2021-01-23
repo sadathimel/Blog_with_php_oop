@@ -19,32 +19,59 @@
             $tags = mysqli_real_escape_string($db->link, $_POST['tags']);
             $author = mysqli_real_escape_string($db->link, $_POST['author']);
 
-            $permited  = array('jpg','jpeg','png','gif');
+            $permited = array('jpg', 'jpeg', 'png', 'gif');
             $file_name = $_FILES['image']['name'];
             $file_size = $_FILES['image']['size'];
             $file_temp = $_FILES['image']['tmp_name'];
 
-            $div           = explode('.',$file_name);
-            $file_ext      = strtolower(end($div));
-            $uniqe_image   = substr(md5(time()), 0,10).'.'.$file_ext;
-            $uploded_image = "upload/".$uniqe_image;
+            $div = explode('.', $file_name);
+            $file_ext = strtolower(end($div));
+            $uniqe_image = substr(md5(time()), 0, 10) . '.' . $file_ext;
+            $uploded_image = "upload/" . $uniqe_image;
 
-            if ($title == "" || $cat == "" || $body == "" || $tags == "" || $author == "" || $file_name == "") {
+            if ($title == "" || $cat == "" || $body == "" || $tags == "" || $author == "") {
                 echo "<span class='error'>Field must not be empty !</span>";
-            } elseif ($file_size > 1048567) {
-                echo "<span class='error'>Image Size should be less then 1MB!</span>";
-            } elseif (in_array($file_ext, $permited) === false) {
-                echo "<span class='error'>You can upload only:-".implode(', ', $permited)."!</span>";
-            }else {
-                move_uploaded_file($file_temp, $uploded_image);
-                $query = "INSERT INTO tbl_post(cat, title, body, image, author, tags) 
-                VALUES('$cat', '$title', '$body', '$uploded_image', '$author', '$tags')";
+            } else {
+                if (!empty($file_name)) {
+                    if ($file_size > 1048567) {
+                        echo "<span class='error'>Image Size should be less then 1MB!</span>";
+                    } elseif (in_array($file_ext, $permited) === false) {
+                        echo "<span class='error'>You can upload only:-" . implode(', ', $permited) . "!</span>";
+                    } else {
+                        move_uploaded_file($file_temp, $uploded_image);
+                        $query = "UPDATE tbl_post
+                        SET
+                        cat = '$cat',
+                        title = '$title',
+                        body = '$body',
+                        image = '$uploded_image',
+                        author = '$author',
+                        tags = '$tags'
+                        WHERE id = $postid";
 
-                $insert_rows = $db->insert($query);
-                if ($insert_rows) {
-                    echo "<span class='success'>Post insert successfully!</span>";
-                }else {
-                    echo "<span class='error'>Post not Inserted !</span>";
+                        $updated_row = $db->insert($query);
+                        if ($updated_row) {
+                            echo "<span class='success'>Data Updated successfully!</span>";
+                        } else {
+                            echo "<span class='error'>Data Not Updated !</span>";
+                        }
+                    }
+                } else {
+                    $query = "UPDATE tbl_post
+                        SET
+                        cat = '$cat',
+                        title = '$title',
+                        body = '$body',
+                        author = '$author',
+                        tags = '$tags'
+                        WHERE id = $postid";
+
+                    $updated_row = $db->insert($query);
+                    if ($updated_row) {
+                        echo "<span class='success'>Data Updated successfully!</span>";
+                    } else {
+                        echo "<span class='error'>Data Not Updated !</span>";
+                    }
                 }
             }
         }
@@ -57,7 +84,7 @@
                     while ($postresult = $getpost-> fetch_assoc()) {
 
             ?>
-            <form action="addpost.php" method="post" enctype="multipart/form-data">
+            <form action="" method="post" enctype="multipart/form-data">
                 <table class="form">
 
                     <tr>
