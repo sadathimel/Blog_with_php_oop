@@ -15,12 +15,12 @@
                     <ul class="submenu">
                         <li><a href="addpage.php">Add New Page</a> </li>
                         <?php
-                        $query = "SELECT * FROM tbl_page";
-                        $pages = $db->select($query);
-                        if ($pages) {
-                        while ($result = $pages->fetch_assoc()) {
-                        ?>
-                        <li><a href="page.php?pageid=<?php echo $result['id']; ?>"><?php echo $result['name']; ?></a> </li>
+                            $query = "SELECT * FROM tbl_page";
+                            $pages = $db->select($query);
+                            if ($pages) {
+                            while ($result = $pages->fetch_assoc()) {
+                            ?>
+                            <li><a href="page.php?pageid=<?php echo $result['id']; ?>"><?php echo $result['name']; ?></a> </li>
                         <?php } }?>
                     </ul>
                 </li>
