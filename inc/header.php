@@ -10,7 +10,27 @@ $fm = new Format();
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Basic Website</title>
+    <?php
+    if(isset($_GET['pageid'])){
+        $pagetitle = $_GET['pageid'];
+        $query = "SELECT * FROM tbl_page WHERE id='$pagetitle'";
+        $pages = $db->select($query);
+        if ($pages) {
+            while ($result = $pages->fetch_assoc()) { ?>
+                <title><?php echo $result['name'];?>-<?php echo TITLE;?></title>
+
+            <?php } }} elseif(isset($_GET['id'])){
+        $postid = $_GET['id'];
+        $query = "SELECT * FROM tbl_post WHERE id='$postid'";
+        $posts = $db->select($query);
+        if ($posts) {
+            while ($result = $posts->fetch_assoc()) { ?>
+                <title><?php echo $result['title'];?>-<?php echo TITLE;?></title>
+
+            <?php } }} else{ ?>
+        <title><?php echo $fm->title();?>-<?php echo TITLE;?></title>
+   <?Php }?>
+
 	<meta name="language" content="English">
 	<meta name="description" content="It is a website about education">
 	<meta name="keywords" content="blog,cms blog">
@@ -43,6 +63,7 @@ $(window).load(function() {
 });
 </script>
 </head>
+
 
 <body>
 	<div class="headersection templete clear">
@@ -85,7 +106,16 @@ $(window).load(function() {
 <div class="navsection templete">
 	<ul>
 		<li><a id="active" href="index.php">Home</a></li>
-		<li><a href="about.php">About</a></li>	
+
+        <?php
+        $query = "SELECT * FROM tbl_page";
+        $pages = $db->select($query);
+        if ($pages) {
+            while ($result = $pages->fetch_assoc()) {
+                ?>
+                <li><a href="page.php?pageid=<?php echo $result['id']; ?>"><?php echo $result['name']; ?></a> </li>
+            <?php } }?>
+
 		<li><a href="contact.php">Contact</a></li>
 	</ul>
 </div>
