@@ -41,7 +41,7 @@
 				<td><?php echo $result['tags'];?></td>
 				<td><?php echo $fm->formatDate($result['date']) ;?></td>
 				<td> 
-					<a href="editpost.php?editpostid=<?php echo $result['id']; ?>">View</a>
+					<a href="viewpost.php?viewpostid=<?php echo $result['id']; ?>">View</a>
 
 					<?php if ( Session::get('userId') == $result['userid'] || Session::get('UserRole') == '0'){ ?>
 					|| <a href="editpost.php?editpostid=<?php echo $result['id']; ?>">Edit</a> ||
