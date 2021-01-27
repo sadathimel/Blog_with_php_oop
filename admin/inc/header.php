@@ -104,6 +104,7 @@
             <?php 
                 if (Session::get('UserRole') == 0) { ?>
                     <li class="ic-charts"><a href="aduser.php"><span>Add User</span></a></li>
+                    <li class="ic-charts"><a href="theme.php"><span>Theme</span></a></li>
               <?php  } ?>
             
             <li class="ic-charts"><a href="userlist.php"><span>User List</span></a></li>
