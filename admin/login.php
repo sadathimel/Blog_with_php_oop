@@ -30,17 +30,18 @@
                 $query = "SELECT * FROM tbl_user WHERE username = '$username' AND password = '$password'";
                 $result = $db->select($query);
                 if ($result != false) {
-                    $value = mysqli_fetch_array($result);
-                    $row   = mysqli_num_rows($result);
-                    if ($row > 0) {
+                    // $value = mysqli_fetch_array($result);
+                    // $row   = mysqli_num_rows($result);
+                    $value = $result->fetch_assoc();
+                    // if ($row > 0) {
                         Session::set("login",true);
                         Session::set("username",$value['username']);
                         Session::set("userId",$value['id']);
                         Session::set("UserRole",$value['role']);
                         header("Location:index.php");
-                    }else{
-                        echo "<span style='color:red;font-size: 18px'>No Result found !!.</span>";
-                    }
+                    // }else{
+                    //     echo "<span style='color:red;font-size: 18px'>No Result found !!.</span>";
+                    // }
                 }else{
                     echo "<span style='color:red;font-size: 18px'>Username or password not matched !!.</span>";
                 }
