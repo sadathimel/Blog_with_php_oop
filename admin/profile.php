@@ -2,7 +2,7 @@
 <?php include 'inc/sidebar.php'; ?>
 <?php
     $userid = Session::get('userId');
-    $userrole = Session::get('userrole');
+    $userrole = Session::get('UserRole');
 ?>
 <div class="grid_10">
 
