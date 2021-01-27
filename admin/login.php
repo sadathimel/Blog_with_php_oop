@@ -47,18 +47,21 @@
                 }
             }
         ?>
-		<form action="login.php" method="post">
+		<form action="" method="post">
 			<h1>Admin Login</h1>
 			<div>
-				<input type="text" placeholder="Username" required="" name="username"/>
+				<input type="text" placeholder="Username"  name="username"/>
 			</div>
 			<div>
-				<input type="password" placeholder="Password" required="" name="password"/>
+				<input type="password" placeholder="Password"  name="password"/>
 			</div>
 			<div>
 				<input type="submit" value="Log in" />
 			</div>
 		</form><!-- form -->
+        <div class="button">
+            <a href="forgetpass.php">Forgot Password !</a>
+        </div><!-- button -->
 		<div class="button">
 			<a href="#">Training with live project</a>
 		</div><!-- button -->
