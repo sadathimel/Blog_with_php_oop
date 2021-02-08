@@ -6,7 +6,7 @@
 </div>
 <div id="site_info">
     <p>
-        &copy; Copyright <a href="http://trainingwithliveproject.com">Training with live project</a>. All Rights Reserved.
+        &copy; Copyright <a href="#">Blog with php Sadat Himel</a>. All Rights Reserved.
     </p>
 </div>
 </body>
